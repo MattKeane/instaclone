@@ -37,3 +37,21 @@ A webapp that allows users to share photos with their friends.
 | author   | User      |
 | body     | String    |
 | posted   | Date      |
+
+## Routes
+
+| Route                     | Method | Description           |
+| ------------------------- | ------ | --------------------- |
+| /auth/signup              | POST   | creates account       |
+| /auth/login               | POST   | logs in               |
+| /auth/logout              | DELETE | logs out              |
+| /pictures                 | POST   | adds a picture        |
+| /pictures                 | GET    | see friends' pictures |
+| /pictures/:id             | GET    | show picture          |
+| /pictures                 | POST   | create a new picture  |
+| /pictures/:id/edit        | GET    | picture edit page     |
+| /pictures/:id             | PUT    | update picture        |
+| /pictures/:id/like        | POST   | like a picture        |
+| /pictures/:id/like        | DELETE | unlike a picture      |
+| /pictures/:id/comment     | POST   | add a comment         |
+| /pictures/:id/comment/:id | DELETE | delete a comment      |
