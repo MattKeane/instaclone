@@ -6,6 +6,9 @@ const app = express()
 require("dotenv").config()
 const PORT = process.env.PORT
 
+// Connect to database
+require("./db")
+
 // Home route
 app.get("/", (req, res) => {
 	res.send("Route works")
