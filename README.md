@@ -42,6 +42,7 @@ A webapp that allows users to share photos with their friends.
 
 | Route                     | Method | Description           |
 | ------------------------- | ------ | --------------------- |
+| /auth/signup              | GET    | new account page      |
 | /auth/signup              | POST   | creates account       |
 | /auth/login               | POST   | logs in               |
 | /auth/logout              | DELETE | logs out              |
