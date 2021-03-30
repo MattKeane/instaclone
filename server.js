@@ -9,6 +9,9 @@ const PORT = process.env.PORT
 // Connect to database
 require("./db")
 
+// Middleware
+app.use(express.static("public"))
+
 // Controllers
 const authController = require("./controllers/authController")
 app.use("/auth", authController)
