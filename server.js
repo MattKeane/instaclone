@@ -23,6 +23,13 @@ app.get("/", (req, res) => {
 	res.redirect("/auth/register")
 })
 
+// 404 route
+app.get("*", (req, res) => {
+	res.render("404.ejs", {
+		title: " — 404: File Not Found"
+	})
+})
+
 // Setting up app to listen
 app.listen(PORT, err => {
 	const d = new Date()
