@@ -9,4 +9,29 @@
 <body>
 	<header>
 		<h1>Instaclone</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="#">Photos</a>
+				</li>
+				<li>
+					<a href="#">Friends</a>
+				</li>
+				<% if (currentUser) { %>
+					<li>
+						<a href="#">Sign Out</a>
+					</li>
+				<% } else { %>
+					<li>
+						<a href="/auth/register">Sign Up</a>
+					</li>
+					<li>
+						<a href="#">Sign In</a>
+					</li>
+				<% } %>
+			</ul>
+		</nav>
 	</header>

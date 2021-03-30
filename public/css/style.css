@@ -47,9 +47,35 @@ button {
 	filter: drop-shadow(.2em .2em .3em black)
 }
 
+nav {
+	padding: .25em;
+	background-color: #425D70;
+	filter: drop-shadow(0 .2em .3em black);
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+}
+
+nav a {
+	color: inherit;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #F2A365;
+	text-decoration: underline;
+}
+
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: #222831;
 		color: #ECECEC;
+	}
+
+	nav {
+		background-color: #30475E;
 	}
 }
