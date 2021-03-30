@@ -45,7 +45,7 @@ A webapp that allows users to share photos with their friends.
 | /auth/register            | GET    | new account page      |
 | /auth/register            | POST   | creates account       |
 | /auth/login               | POST   | logs in               |
-| /auth/logout              | DELETE | logs out              |
+| /auth/logout              | GET    | logs out              |
 | /pictures                 | POST   | adds a picture        |
 | /pictures                 | GET    | see friends' pictures |
 | /pictures/:id             | GET    | show picture          |
