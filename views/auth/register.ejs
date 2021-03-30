@@ -1,5 +1,23 @@
 <%- include("../partials/header.ejs") %>
 
-<h1>This will be the register page</h1>
+<form>
+	<fieldset>
+		<label for="username-input">Username: </label>
+		<input type="text" name="username" id="username-input">
+	</fieldset>
+	<fieldset>
+		<label for="email-input">Email: </label>
+		<input type="text" name="email" id="email-input">
+	</fieldset>
+	<fieldset>
+		<label for="password-input">Password: </label>
+		<input type="password" name="password" id="password-input">
+	</fieldset>
+	<fieldset>
+		<label for="verify-password">Verify Password: </label>
+		<input type="password" name="verifyPassword" id="verify-password">
+	</fieldset>
+	<button>Register</button>
+</form>
 
 <%- include("../partials/footer.ejs")%>
