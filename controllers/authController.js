@@ -51,4 +51,29 @@ router.get("/login", (req, res) => {
 	})
 })
 
+router.post("/login", async (req, res, next) => {
+	try {
+		const userToSignIn = await User.findOne({ email: req.body.email })
+		if (userToSignIn) {
+			const validLogin = bcrypt.compareSync(req.body.password, userToSignIn.password)
+			if (validLogin) {
+				req.session.user = userToSignIn
+				req.session.message = `Welcome back, ${userToSignIn.username}!`
+				res.redirect("/")
+			} else {
+				req.session.message = "Invalid email or password"
+				res.redirect("/auth/login")
+			}
+		} else {
+			req.session.message = "Invalid email or password"
+			res.redirect("/auth/login")
+		}
+	} catch (err) {
+		const d = new Date()
+		console.error(`${d.toLocaleString()}: Error logging in user:`)
+		console.error(err)
+		next(err)
+	}
+})
+
 module.exports = router
