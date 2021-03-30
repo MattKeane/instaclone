@@ -5,12 +5,14 @@ const bcrypt = require("bcrypt")
 // Models
 const User = require("../models/user")
 
+// Registration page
 router.get("/register", (req, res) => {
 	res.render("auth/register.ejs", {
 		title: " — Sign Up",
 	})
 })
 
+// Register route
 router.post("/register", async (req, res, next) => {
 	try {
 		if (req.body.password === req.body.verifyPassword) {
@@ -28,9 +30,6 @@ router.post("/register", async (req, res, next) => {
 				const createdUser = await User.create(req.body)
 				req.session.user = createdUser
 				req.session.message = `Thank you for signing up, ${createdUser.username}!`
-				const d = new Date()
-				console.log(`${d.toLocaleString()}: User created:`)
-				console.log(createdUser)
 				res.redirect("/")
 			}
 		} else {
@@ -43,6 +42,13 @@ router.post("/register", async (req, res, next) => {
 		console.error(err)
 		next(err)
 	}
+})
+
+// Login Page
+router.get("/login", (req, res) => {
+	res.render("auth/login.ejs", {
+		title: " — Sign In"
+	})
 })
 
 module.exports = router
