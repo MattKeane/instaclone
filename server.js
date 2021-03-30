@@ -1,6 +1,7 @@
 // NPM imports
 const express = require("express")
 const app = express()
+const bodyParser = require("body-parser")
 
 // Environment variables
 require("dotenv").config()
@@ -11,6 +12,7 @@ require("./db")
 
 // Middleware
 app.use(express.static("public"))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // Controllers
 const authController = require("./controllers/authController")

@@ -7,4 +7,9 @@ router.get("/register", (req, res) => {
 	})
 })
 
+router.post("/register", async (req, res, next) => {
+	console.log(req.body)
+	res.redirect("/")
+})
+
 module.exports = router

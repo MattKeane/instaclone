@@ -1,7 +1,7 @@
 <%- include("../partials/header.ejs") %>
 
 <h2>Sign Up</h2>
-<form>
+<form action="/auth/register" method="POST">
 	<fieldset>
 		<label for="username">Username: </label>
 		<input type="text" name="username" id="username-input">
