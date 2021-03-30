@@ -15,7 +15,7 @@ app.use("/auth", authController)
 
 // Home route
 app.get("/", (req, res) => {
-	res.send("Route works")
+	res.redirect("/auth/register")
 })
 
 // Setting up app to listen
