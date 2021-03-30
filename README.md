@@ -21,7 +21,7 @@ A webapp that allows users to share photos with their friends.
 | password | String    |
 | friends  | [User]    |
 
-### Picture
+### Photo
 | Field    | Datatype  |
 | -------- | --------- |
 | img      | Buffer    |
@@ -46,13 +46,13 @@ A webapp that allows users to share photos with their friends.
 | /auth/register            | POST   | creates account       |
 | /auth/login               | POST   | logs in               |
 | /auth/logout              | GET    | logs out              |
-| /pictures                 | POST   | adds a picture        |
-| /pictures                 | GET    | see friends' pictures |
-| /pictures/:id             | GET    | show picture          |
-| /pictures                 | POST   | create a new picture  |
-| /pictures/:id/edit        | GET    | picture edit page     |
-| /pictures/:id             | PUT    | update picture        |
-| /pictures/:id/like        | POST   | like a picture        |
-| /pictures/:id/like        | DELETE | unlike a picture      |
-| /pictures/:id/comment     | POST   | add a comment         |
-| /pictures/:id/comment/:id | DELETE | delete a comment      |
+| /photos                 	| POST   | adds a picture        |
+| /photos                 	| GET    | see friends' pictures |
+| /photos/:id             	| GET    | show picture          |
+| /photos                 	| POST   | create a new picture  |
+| /photos/:id/edit        	| GET    | picture edit page     |
+| /photos/:id             	| PUT    | update picture        |
+| /photos/:id/like        	| POST   | like a picture        |
+| /photos/:id/like        	| DELETE | unlike a picture      |
+| /photos/:id/comment     	| POST   | add a comment         |
+| /photos/:id/comment/:id 	| DELETE | delete a comment      |
