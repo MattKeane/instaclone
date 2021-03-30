@@ -2,10 +2,12 @@
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
+const session = require("express-session")
 
 // Environment variables
 require("dotenv").config()
 const PORT = process.env.PORT
+const SESSION_SECRET = process.env.SESSION_SECRET
 
 // Connect to database
 require("./db")
@@ -13,6 +15,16 @@ require("./db")
 // Middleware
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(session({
+	secret: SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false,
+}))
+
+app.use((req, res, next) => {
+	res.locals.currentUser = req.session.user
+	next()
+})
 
 // Controllers
 const authController = require("./controllers/authController")
@@ -20,7 +32,13 @@ app.use("/auth", authController)
 
 // Home route
 app.get("/", (req, res) => {
-	res.redirect("/auth/register")
+	if (req.session.user) {
+		res.render("home.ejs", {
+			title: " — Home"
+		})
+	} else {
+		res.redirect("/auth/register")
+	}
 })
 
 // 404 route

@@ -26,12 +26,12 @@ router.post("/register", async (req, res, next) => {
 				const salt = bcrypt.genSaltSync(10)
 				req.body.password = bcrypt.hashSync(req.body.password, salt)
 				const createdUser = await User.create(req.body)
-				// TO DO: add sessions
+				req.session.user = createdUser
 				// TO DO: add flash messaging
 				const d = new Date()
 				console.log(`${d.toLocaleString()}: User created:`)
 				console.log(createdUser)
-				res.send("User created")
+				res.redirect("/")
 			}
 		} else {
 			// TO DO: Add flash messaging
