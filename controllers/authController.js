@@ -51,6 +51,7 @@ router.get("/login", (req, res) => {
 	})
 })
 
+// Login route
 router.post("/login", async (req, res, next) => {
 	try {
 		const userToSignIn = await User.findOne({ email: req.body.email })
@@ -74,6 +75,13 @@ router.post("/login", async (req, res, next) => {
 		console.error(err)
 		next(err)
 	}
+})
+
+// Logout route
+router.get("/logout", async (req, res) => {
+	await req.session.destroy()
+	req.message = "Goodbye!"
+	res.redirect("/")
 })
 
 module.exports = router
