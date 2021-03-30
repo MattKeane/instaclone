@@ -9,6 +9,10 @@ const PORT = process.env.PORT
 // Connect to database
 require("./db")
 
+// Controllers
+const authController = require("./controllers/authController")
+app.use("/auth", authController)
+
 // Home route
 app.get("/", (req, res) => {
 	res.send("Route works")
