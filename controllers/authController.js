@@ -17,25 +17,25 @@ router.post("/register", async (req, res, next) => {
 			const checkUsername = await User.findOne({ username: req.body.username})
 			const checkEmail = await User.findOne({ email: req.body.email })
 			if (checkUsername) {
-				// TO DO: Add flash messaging
-				res.redirect("/")
+				req.session.message = "Username already taken"
+				res.redirect("/auth/register")
 			} else if (checkEmail) {
-				// TO DO: Add flash messaging
-				res.redirect("/")
+				req.session.message = "Email address already used"
+				res.redirect("/auth/register")
 			} else {
 				const salt = bcrypt.genSaltSync(10)
 				req.body.password = bcrypt.hashSync(req.body.password, salt)
 				const createdUser = await User.create(req.body)
 				req.session.user = createdUser
-				// TO DO: add flash messaging
+				req.session.message = `Thank you for signing up, ${createdUser.username}!`
 				const d = new Date()
 				console.log(`${d.toLocaleString()}: User created:`)
 				console.log(createdUser)
 				res.redirect("/")
 			}
 		} else {
-			// TO DO: Add flash messaging
-			res.redirect("/")
+			req.session.message = "Passwords must match!"
+			res.redirect("/auth/register")
 		}
 	} catch (err) {
 		const d = new Date()
