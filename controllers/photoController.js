@@ -21,8 +21,18 @@ const requireLogin = (req, res, next) => {
 }
 
 // Photo homepage
-router.get("/", requireLogin, (req, res) => {
-	res.render("photos/home.ejs")
+router.get("/", requireLogin, async (req, res, next) => {
+	try {
+		const allPhotos = await Photo.find({})
+		res.render("photos/home.ejs", {
+			photos: allPhotos,
+		})
+	} catch (err) {
+		const d = new Date()
+		console.error(`${d.toLocaleString()}: Error with photo home page:`)
+		console.error(err)
+		next(err)
+	}
 })
 
 // New photo page
@@ -48,6 +58,20 @@ router.post("/new", upload.single("image"), async (req, res, next) => {
 	} catch (err) {
 		const d = new Date()
 		console.error(`${d.toLocaleString()}: Error creating new photo:`)
+		console.error(err)
+		next(err)
+	}
+})
+
+// Photo serving route
+router.get("/:id/img", async (req, res, next) => {
+	try {
+		const photoToSend = await Photo.findById(req.params.id)
+		res.set("Content-Type", photoToSend.image.contentType)
+		res.send(photoToSend.image.data)
+	} catch (err) {
+		const d = new Date()
+		console.error(`${d.toLocaleString()}: Error serving photo:`)
 		console.error(err)
 		next(err)
 	}

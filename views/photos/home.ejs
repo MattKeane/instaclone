@@ -3,4 +3,12 @@
 <h2>This is the photos home page</h2>
 <a href="/photos/new">Add a new photo</a>
 
+<% photos.forEach(photo => { %>
+	<div>
+		<img src="/photos/<%= photo._id%>/img" alt="<%= photo.caption %>">
+		<small><%= photo.created.toLocaleString() %></small>
+		<p><%= photo.caption %></p>
+	</div>
+<% }) %>
+
 <%- include("../partials/footer.ejs")%>
