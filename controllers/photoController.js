@@ -1,16 +1,20 @@
 const express = require("express")
 const router = express.Router()
 
-router.get("/", (req, res) => {
-	res.render("photos/home.ejs", {
-		title: " — Photos",
-	})
+// Middleware
+router.use((req, res, next) => {
+	res.locals.title = " — Photos"
+	next()
 })
 
+// Photo homepage
+router.get("/", (req, res) => {
+	res.render("photos/home.ejs")
+})
+
+// New photo page
 router.get("/new", (req, res) => {
-	res.render("photos/new.ejs", {
-		title: " — Photos"
-	})
+	res.render("photos/new.ejs")
 })
 
 module.exports = router
