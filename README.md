@@ -24,7 +24,7 @@ A webapp that allows users to share photos with their friends.
 ### Photo
 | Field    | Datatype  |
 | -------- | --------- |
-| img      | Buffer    |
+| image    | Buffer    |
 | caption  | String    |
 | author   | User      |
 | likes    | [User]    |
