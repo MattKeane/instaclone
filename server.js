@@ -32,6 +32,9 @@ app.use((req, res, next) => {
 const authController = require("./controllers/authController")
 app.use("/auth", authController)
 
+const photoController = require("./controllers/photoController")
+app.use("/photos", photoController)
+
 // Home route
 app.get("/", (req, res) => {
 	if (req.session.user) {
