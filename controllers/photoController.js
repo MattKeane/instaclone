@@ -9,7 +9,13 @@ router.use((req, res, next) => {
 
 // Photo homepage
 router.get("/", (req, res) => {
-	res.render("photos/home.ejs")
+	if (req.session.user) {
+		res.render("photos/home.ejs")
+	} else {
+		req.message = "You must be signed in to add a photo"
+		res.redirect("/auth/login")
+	}
+	
 })
 
 // New photo page
