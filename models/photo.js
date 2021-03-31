@@ -1,6 +1,4 @@
 const mongoose = require("mongoose")
-const Comment = require("./comment")
-const User = require("./user")
 
 const photoSchema = new mongoose.Schema({
 	image: {
@@ -8,9 +6,18 @@ const photoSchema = new mongoose.Schema({
 		contentType: String,
 	},
 	caption: String,
-	author: User,
-	likes: [User],
-	comments: [Comment],
+	author: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User",
+	},
+	likes: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User",
+	}],
+	comments: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User",
+	}],
 	created: {
 		type: Date,
 		default: Date.now,
