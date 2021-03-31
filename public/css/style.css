@@ -17,7 +17,7 @@ footer {
 }
 
 form {
-	max-width: 300px;
+	max-width: 400px;
 	margin: 0 auto;
 }
 
@@ -75,6 +75,13 @@ a {
 
 a:hover {
 	color: #F2A365;
+}
+
+textarea {
+	font-family: inherit;
+	width: 65%;
+	resize: none;
+	border-radius: 3px;
 }
 
 @media (prefers-color-scheme: dark) {
