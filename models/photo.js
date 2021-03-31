@@ -3,7 +3,7 @@ const Comment = require("./comment")
 const User = require("./user")
 
 const photoSchema = new mongoose.Schema({
-	img: {
+	image: {
 		data: Buffer,
 		contentType: String,
 	},
