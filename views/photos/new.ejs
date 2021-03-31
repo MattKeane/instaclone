@@ -1,5 +1,15 @@
 <%- include("../partials/header.ejs") %>
 
-<h2>This is the new photos page</h2>
+<form>
+	<fieldset>
+		<label for="image">Select Photo:</label>
+		<input type="file" name="image" id="image">
+	</fieldset>
+	<fieldset>
+		<label for="caption">Caption:</label>
+		<input type="text" name="caption" id="caption">
+	</fieldset>
+	<button>Add Photo</button>
+</form>
 
 <%- include("../partials/footer.ejs") %>
